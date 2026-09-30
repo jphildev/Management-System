@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Register</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <h1 id="logo">Mini Management</h1>
+  </header>
+
+  <main>
+    <section class="view auth-view">
+      <h1>Create an account</h1>
+
+
+      <form id="register-form">
+        <label for="register-fullname">Full name</label>
+        <input id="register-fullname" name="fullName" type="text" required autocomplete="name" />
+
+        <label for="register-email">Email</label>
+        <input id="register-email" name="email" type="email" required autocomplete="email" />
+
+        <label for="register-username">Username</label>
+        <input id="register-username" name="username" type="text" required minlength="3" autocomplete="username" />
+
+        <label for="register-password">Password</label>
+        <input id="register-password" name="password" type="password" required minlength="6" autocomplete="new-password" />
+
+        <label for="register-confirm">Confirm password</label>
+        <input id="register-confirm" name="confirm" type="password" required autocomplete="new-password" />
+
+        <button type="submit">Register</button>
+      </form>
+
+      <p>Already registered? <a href="login.html">Log in</a></p>
+    </section>
+  </main>
+
+</body>
+</html>
