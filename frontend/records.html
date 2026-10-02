@@ -6,8 +6,9 @@
 <meta name="description" content="Records — add, view, and organize your records." />
 <title>Records · Mini Management System</title>
 <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="records.css" />
 </head>
-<body>
+<body class="records-page">
 
   <header class="navbar">
     <a href="index.html" class="brand">Mini Management</a>
@@ -24,21 +25,138 @@
     </nav>
   </header>
 
-  <main>
+  <main class="records-main">
     <section class="view">
 
-      <div class="page-head">
-        <h1>Records</h1>
-       
+      <div class="hero-row">
+        <div>
+          <h1 class="hero-title">Records</h1>
+          <p class="hero-sub">Add, search, and manage your records from one simple workspace.</p>
+        </div>
+        <div class="total-pill" aria-live="polite">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <span class="total-label">Total records</span>
+            <strong id="record-total">0</strong>
+          </div>
+        </div>
+      </div>
+
+      <form id="record-form" class="panel-card" novalidate>
+        <div class="panel-head-soft">
+          <h2>Add a new record</h2>
+          <p>Fill in the details below. Name and category are required.</p>
+        </div>
+        <div class="panel-body">
+          <div class="row-2">
+            <div class="field">
+              <label for="record-name">Name</label>
+              <input id="record-name" name="name" type="text" placeholder="Enter a full name" />
+              <p class="field-error" id="record-name-error"></p>
+            </div>
+            <div class="field">
+              <label for="record-category">Category</label>
+              <input id="record-category" name="category" type="text" placeholder="e.g. Student" />
+              <p class="field-error" id="record-category-error"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="record-notes">Notes</label>
+            <span class="hint">(optional)</span>
+            <textarea id="record-notes" name="notes" rows="3" placeholder="Add a short note about this record"></textarea>
+          </div>
+          <button type="submit" class="btn primary-pill">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Add record
+          </button>
+        </div>
+      </form>
+
+      <div class="panel-card records-card">
+        <div class="records-head">
+          <div>
+            <h2>Your records</h2>
+            <p id="records-count">0 records shown</p>
+          </div>
+          <div class="records-toolbar">
+            <div class="search-wrap">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input id="record-search" type="search" placeholder="Search records..." aria-label="Search records" />
+            </div>
+            <select id="record-filter" aria-label="Filter by category">
+              <option value="">All categories</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="records-loading" class="loading" role="status">
+          <span class="spinner" aria-hidden="true"></span> Loading records…
+        </div>
+
+        <div class="table-wrap" id="records-table-wrap" hidden>
+          <table class="records-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Notes</th>
+                <th>Added</th>
+                <th class="th-actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="records-body"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination" id="records-pagination" hidden>
+          <button type="button" class="btn ghost" id="page-prev">Previous</button>
+          <span id="page-info" class="muted"></span>
+          <button type="button" class="btn ghost" id="page-next">Next</button>
+        </div>
       </div>
 
     </section>
   </main>
 
+  <dialog id="edit-dialog" aria-labelledby="edit-title">
+    <form id="edit-form" class="form" novalidate>
+      <h2 id="edit-title">Edit record</h2>
+      <div class="field">
+        <label for="edit-name">Name</label>
+        <input id="edit-name" name="name" type="text" />
+        <p class="field-error" id="edit-name-error"></p>
+      </div>
+      <div class="field">
+        <label for="edit-category">Category</label>
+        <input id="edit-category" name="category" type="text" />
+        <p class="field-error" id="edit-category-error"></p>
+      </div>
+      <div class="field">
+        <label for="edit-notes">Notes</label>
+        <textarea id="edit-notes" name="notes" rows="3"></textarea>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="edit-cancel">Cancel</button>
+        <button type="submit" class="btn">Save changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="delete-dialog" aria-labelledby="delete-title">
+    <div class="form">
+      <h2 id="delete-title">Delete record?</h2>
+      <p id="delete-message" class="muted"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="delete-cancel">Keep record</button>
+        <button type="button" class="btn danger" id="delete-confirm">Delete record</button>
+      </div>
+    </div>
+  </dialog>
+
   <footer class="footer">
-    <p>&copy; 2026 Mini Management System</p>
   </footer>
 
   <script src="js/app.js"></script>
+  <script src="js/records.js"></script>
 </body>
 </html>
