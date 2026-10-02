@@ -3,28 +3,42 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Home · Mini Management System</title>
+<meta name="description" content="Mini Management System — keep track of your records in one place." />
+<title>Home</title>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <header>
-    <h1 id="logo">Mini Management</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+  <header class="navbar">
+    <a href="index.html" class="brand">Mini Management</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="records.html">Records</a></li>
       </ul>
+      <button class="btn ghost" id="logoutBtn" type="button">Log out</button>
     </nav>
   </header>
 
   <main>
     <section class="view">
-      <h1>Welcome</h1>
-      <p></p>
+
+      <div class="page-head">
+        <h1>Home</h1>
+       
+      </div>
+
     </section>
   </main>
 
+  <footer class="footer">
+    <p>&copy; 2026 Mini Management System</p>
+  </footer>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
