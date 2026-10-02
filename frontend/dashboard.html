@@ -3,28 +3,73 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dashboard · Mini Management System</title>
+<title>Dashboard</title>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <header>
-    <h1 id="logo">Mini Management</h1>
-    <nav>
-      <ul>
+  <header class="navbar">
+    <a href="index.html" class="brand">Mini Management</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-menu" id="navMenu">
+      <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="dashboard.html" class="active" aria-current="page">Dashboard</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="records.html">Records</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
+    <!-- [UI-05] Dashboard layout: summary stats + recent activity + quick actions.
+         Numbers are placeholders until Developer 5 wires this up to the API. -->
     <section class="view">
-      <h1>Dashboard</h1>
-      <p></p>
+      <div class="page-head">
+        <h1>Dashboard</h1>
+        <p class="muted">A quick overview of your records.</p>
+      </div>
+
+      <div class="grid stats">
+        <div class="card stat">
+          <p class="stat-label">Total records</p>
+          <p class="stat-value" id="stat-total">&mdash;</p>
+        </div>
+        <div class="card stat">
+          <p class="stat-label">Added this week</p>
+          <p class="stat-value" id="stat-week">&mdash;</p>
+        </div>
+      </div>
+
+      <div class="grid dash-panels">
+        <div class="card panel">
+          <div class="panel-head">
+            <h2>Recent records</h2>
+            <a class="link" href="records.html">View all</a>
+          </div>
+          <ul class="placeholder-list" id="recent-records">
+            <li class="skeleton"></li>
+            <li class="skeleton"></li>
+            <li class="skeleton"></li>
+          </ul>
+        </div>
+
+        <div class="card panel">
+          <h2>Quick actions</h2>
+          <div class="quick-actions">
+            <a class="btn block" href="records.html">Add a record</a>
+            <a class="btn ghost block" href="records.html">View records</a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
+  <footer class="footer">
+    <p>&copy; 2026 Mini Management System</p>
+  </footer>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
