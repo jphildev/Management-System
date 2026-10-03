@@ -66,8 +66,6 @@
             <textarea id="record-notes" name="notes" rows="3" placeholder="Add a short note about this record"></textarea>
           </div>
           <button type="submit" class="btn primary-pill">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            Add record
           </button>
         </div>
       </form>
@@ -80,7 +78,6 @@
           </div>
           <div class="records-toolbar">
             <div class="search-wrap">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
               <input id="record-search" type="search" placeholder="Search records..." aria-label="Search records" />
             </div>
             <select id="record-filter" aria-label="Filter by category">
@@ -88,6 +85,89 @@
             </select>
           </div>
         </div>
+
+        <div id="records-loading" class="loading" role="status">
+          <span class="spinner" aria-hidden="true"></span> Loading records…
+        </div>
+
+        <div class="table-wrap" id="records-table-wrap" hidden>
+          <table class="records-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Notes</th>
+                <th>Added</th>
+                <th class="th-actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="records-body"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination" id="records-pagination" hidden>
+          <button type="button" class="btn ghost" id="page-prev">Previous</button>
+          <span id="page-info" class="muted"></span>
+          <button type="button" class="btn ghost" id="page-next">Next</button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <dialog id="edit-dialog" aria-labelledby="edit-title">
+    <form id="edit-form" class="form" novalidate>
+      <h2 id="edit-title">Edit record</h2>
+      <div class="field">
+        <label for="edit-name">Name</label>
+        <input id="edit-name" name="name" type="text" />
+        <p class="field-error" id="edit-name-error"></p>
+      </div>
+      <div class="field">
+        <label for="edit-category">Category</label>
+        <input id="edit-category" name="category" type="text" />
+        <p class="field-error" id="edit-category-error"></p>
+      </div>
+      <div class="field">
+        <label for="edit-notes">Notes</label>
+        <textarea id="edit-notes" name="notes" rows="3"></textarea>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="edit-cancel">Cancel</button>
+        <button type="submit" class="btn">Save changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="view-dialog" aria-labelledby="view-title">
+    <div class="form">
+      <div class="view-head">
+        <span class="avatar avatar-lg" id="view-avatar"></span>
+        <div>
+          <h2 id="view-title"></h2>
+          <span class="pill" id="view-category"></span>
+        </div>
+      </div>
+      <dl class="view-details">
+        <div>
+          <dt>Notes</dt>
+          <dd id="view-notes"></dd>
+        </div>
+        <div>
+          <dt>Date added</dt>
+          <dd id="view-date"></dd>
+        </div>
+      </dl>
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="view-close">Close</button>
+        <button type="button" class="btn" id="view-edit">Edit record</button>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="footer">
+  </footer>
+
   <script src="js/app.js"></script>
   <script src="js/records.js"></script>
 </body>
