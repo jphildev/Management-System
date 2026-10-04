@@ -5,6 +5,7 @@ let records = loadRecords();
 let pageNumber = 1;
 let editingId = null;
 let viewingId = null;
+let deletingId = null;
 
 const $ = (id) => document.getElementById(id);
 
@@ -109,6 +110,7 @@ function iconButton(label, svg, onClick, extraClass = "") {
 const ICONS = {
   view: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>',
   edit: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>',
+  delete: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>',
 };
 
 function render() {
@@ -170,6 +172,7 @@ function render() {
       actions.append(
         iconButton("View record", ICONS.view, () => openView(r.id)),
         iconButton("Edit record", ICONS.edit, () => openEdit(r.id)),
+        iconButton("Delete record", ICONS.delete, () => openDelete(r.id), "danger"),
       );
       actionsTd.appendChild(actions);
 
@@ -303,6 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupAddForm();
   setupEditDialog();
   setupViewDialog();
+  setupDeleteDialog();
   setupToolbar();
   render();
 });
