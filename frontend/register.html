@@ -3,42 +3,59 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Register</title>
+<title>Register · Mini Management System</title>
 <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-
-  <header>
-    <h1 id="logo">Mini Management</h1>
-  </header>
+<body class="signed-out">
 
   <main>
     <section class="view auth-view">
-      <h1>Create an account</h1>
+      <p class="auth-brand">Mini Management</p>
+      <div class="card auth-card">
+        <h1>Create an account</h1>
+        <p class="sub">It only takes a minute.</p>
 
+        <form id="register-form" class="form" novalidate>
+          <div class="field">
+            <label for="register-fullname">Full name</label>
+            <input id="register-fullname" name="fullName" type="text" required autocomplete="name" />
+            <p class="field-error" id="register-fullname-error"></p>
+          </div>
 
-      <form id="register-form">
-        <label for="register-fullname">Full name</label>
-        <input id="register-fullname" name="fullName" type="text" required autocomplete="name" />
+          <div class="field">
+            <label for="register-email">Email</label>
+            <input id="register-email" name="email" type="email" required autocomplete="email" />
+            <p class="field-error" id="register-email-error"></p>
+          </div>
 
-        <label for="register-email">Email</label>
-        <input id="register-email" name="email" type="email" required autocomplete="email" />
+          <div class="field">
+            <label for="register-username">Username</label>
+            <input id="register-username" name="username" type="text" required minlength="3" autocomplete="username" />
+            <p class="field-error" id="register-username-error"></p>
+          </div>
 
-        <label for="register-username">Username</label>
-        <input id="register-username" name="username" type="text" required minlength="3" autocomplete="username" />
+          <div class="row-2">
+            <div class="field">
+              <label for="register-password">Password</label>
+              <input id="register-password" name="password" type="password" required minlength="6" autocomplete="new-password" />
+              <p class="field-error" id="register-password-error"></p>
+            </div>
 
-        <label for="register-password">Password</label>
-        <input id="register-password" name="password" type="password" required minlength="6" autocomplete="new-password" />
+            <div class="field">
+              <label for="register-confirm">Confirm password</label>
+              <input id="register-confirm" name="confirm" type="password" required autocomplete="new-password" />
+              <p class="field-error" id="register-confirm-error"></p>
+            </div>
+          </div>
 
-        <label for="register-confirm">Confirm password</label>
-        <input id="register-confirm" name="confirm" type="password" required autocomplete="new-password" />
+          <button class="btn block" type="submit">Register</button>
+        </form>
 
-        <button type="submit">Register</button>
-      </form>
-
-      <p>Already registered? <a href="login.html">Log in</a></p>
+        <p class="switch">Already registered? <a href="login.html">Log in</a></p>
+      </div>
     </section>
   </main>
 
+  <script src="js/app.js"></script>
 </body>
 </html>
