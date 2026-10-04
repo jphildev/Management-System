@@ -33,6 +33,13 @@
           <h1 class="hero-title">Records</h1>
           <p class="hero-sub">Add, search, and manage your records from one simple workspace.</p>
         </div>
+        <div class="total-pill" aria-live="polite">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <span class="total-label">Total records</span>
+            <strong id="record-total">0</strong>
+          </div>
+        </div>
       </div>
 
       <form id="record-form" class="panel-card" novalidate>
@@ -76,7 +83,14 @@
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
               <input id="record-search" type="search" placeholder="Search records..." aria-label="Search records" />
             </div>
+            <select id="record-filter" aria-label="Filter by category" hidden>
+              <option value="">All categories</option>
+            </select>
           </div>
+        </div>
+
+        <div id="records-loading" class="loading" role="status">
+          <span class="spinner" aria-hidden="true"></span> Loading records…
         </div>
 
         <div class="table-wrap" id="records-table-wrap" hidden>
@@ -127,6 +141,44 @@
       </div>
     </form>
   </dialog>
+
+  <dialog id="view-dialog" aria-labelledby="view-title">
+    <div class="form">
+      <div class="view-head">
+        <span class="avatar avatar-lg" id="view-avatar"></span>
+        <div>
+          <h2 id="view-title"></h2>
+          <span class="pill" id="view-category"></span>
+        </div>
+      </div>
+      <dl class="view-details">
+        <div>
+          <dt>Notes</dt>
+          <dd id="view-notes"></dd>
+        </div>
+        <div>
+          <dt>Date added</dt>
+          <dd id="view-date"></dd>
+        </div>
+      </dl>
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="view-close">Close</button>
+        <button type="button" class="btn" id="view-edit">Edit record</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="delete-dialog" aria-labelledby="delete-title">
+    <div class="form">
+      <h2 id="delete-title">Delete record?</h2>
+      <p id="delete-message" class="muted"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="delete-cancel">Keep record</button>
+        <button type="button" class="btn danger" id="delete-confirm">Delete record</button>
+      </div>
+    </div>
+  </dialog>
+
   <footer class="footer">
   </footer>
 
