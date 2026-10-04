@@ -6,32 +6,37 @@
 <title>Log in</title>
 <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-
-  <header>
-    <h1 id="logo">Mini Management</h1>
-  </header>
+<body class="signed-out">
 
   <main>
     <section class="view auth-view">
-      <h1>Log in</h1>
+      <p class="auth-brand">Mini Management</p>
 
- 
-      <form id="login-form">
-        <label for="login-username">Username</label>
-        <input id="login-username" name="username" type="text" required autocomplete="username" />
+      <div class="card auth-card">
+        <h1>Log in</h1>
+        <p class="sub">Welcome back. Sign in to continue.</p>
 
-        <label for="login-password">Password</label>
-        <input id="login-password" name="password" type="password" required autocomplete="current-password" />
+        <form id="login-form" class="form" novalidate>
+          <div class="field">
+            <label for="login-username">Username</label>
+            <input id="login-username" name="username" type="text" required autocomplete="username" />
+            <p class="field-error" id="login-username-error" aria-live="polite"></p>
+          </div>
 
-    
+          <div class="field">
+            <label for="login-password">Password</label>
+            <input id="login-password" name="password" type="password" required autocomplete="current-password" />
+            <p class="field-error" id="login-password-error" aria-live="polite"></p>
+          </div>
 
-        <button type="submit">Log in</button>
-      </form>
+          <button class="btn block" type="submit">Log in</button>
+        </form>
 
-      <p>No account yet? <a href="register.html">Register</a></p>
+        <p class="switch">No account yet? <a href="register.html">Register</a></p>
+      </div>
     </section>
   </main>
 
+  <script src="js/app.js"></script>
 </body>
 </html>
